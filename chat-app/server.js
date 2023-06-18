@@ -1,5 +1,4 @@
 const net = require("net");
-const { skip } = require("node:test");
 
 const HOSTNAME = process.env.HOST ;
 const PORT = process.env.PORT;
