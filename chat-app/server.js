@@ -10,7 +10,7 @@ let i = 0
 server.on("connection",(socket)=>{
     console.log("A new connection was made.." + i);
     i++;
-    socket.end()
+    // socket.end()
 })
 
 server.listen(PORT,HOSTNAME,()=>{

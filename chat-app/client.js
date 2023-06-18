@@ -7,3 +7,11 @@
     // client.end()
  })
 
+ client.on("close",()=>{
+    console.log("Connection Closed.")
+ })
+
+ 
+ client.on("end",()=>{
+    console.log("Connection Ended.")
+ })
