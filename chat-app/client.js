@@ -11,16 +11,19 @@ const rl = readline.createInterface({
 
     const message = await rl.question("Enter a message  > ");
     client.write(message);
-    const message2 = await rl.question("Enter a message  > ");
-    client.write(message2);
-    client.end()
- })
 
- client.on("close",()=>{
-    console.log("Connection Closed.")
- })
+})
+
+client.on("data",(data)=>{
+    console.log(data.toString("utf-8"));
+})
+
+
+//  client.on("close",()=>{
+//     console.log("Connection Closed.")
+//  })
 
  
- client.on("end",()=>{
-    console.log("Connection Ended.")
- })
+//  client.on("end",()=>{
+//     console.log("Connection Ended.")
+//  })
