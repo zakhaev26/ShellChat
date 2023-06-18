@@ -95,3 +95,13 @@ DNS (Domain Name System): When you type a website URL into your browser, the DNS
 IoT (Internet of Things) Applications: UDP is often used in IoT devices that require low power consumption and efficient communication. For example, smart home devices like light bulbs or temperature sensors may use UDP to send updates to a central hub or server. These updates are typically small and can be transmitted quickly without the need for TCP's reliability mechanisms.
 
 Online Multiplayer Games: UDP is commonly used in online multiplayer games where real-time interaction and low latency are crucial. Games like Fortnite or Minecraft use UDP for faster transmission of game commands, player positions, and updates. While some packets may be lost, the focus is on maintaining real-time responsiveness rather than retransmitting every lost packet.
+
+In computer networking, a port is a communication endpoint that allows different applications or processes on a computer to send and receive data over a network. Ports are identified by numbers and are used to distinguish between different network services running on a single device.
+
+A port number is a 16-bit unsigned integer, ranging from 0 to 65535. Port numbers from 0 to 1023 are well-known or privileged ports, reserved for specific services like HTTP (port 80), HTTPS (port 443), FTP (port 21), etc. Ports from 1024 to 49151 are registered ports, often used by applications or protocols that are not as widely known but still have specific assignments. Ports from 49152 to 65535 are dynamic or private ports, which can be used by applications dynamically or temporarily as needed.
+
+When data is sent from one device to another over a network, it includes both the IP address of the destination device and the port number on that device. This combination allows the network stack on the receiving device to deliver the data to the appropriate application or process.
+
+For example, when you access a website using your web browser, your computer connects to the web server's IP address (e.g., 192.0.2.1) on a specific port, typically port 80 for HTTP. The server's web server software listens for incoming connections on that port, receives the HTTP request from your browser, and responds with the requested web page data.
+
+Ports enable multiple network services to coexist on the same device by using different port numbers for each service. They provide a way for applications to communicate and share data over a network by ensuring that the right data reaches the right application based on the port number used.
