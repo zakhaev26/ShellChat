@@ -1,7 +1,8 @@
 const net = require("net");
+const { skip } = require("node:test");
 
-const HOSTNAME = "127.0.0.1";
-const PORT = 6969;
+const HOSTNAME = process.env.HOST ;
+const PORT = process.env.PORT;
 
 const server = net.createServer();
 
@@ -11,7 +12,6 @@ let userSockets = []
 
 server.on("connection", async (socket) => {
     console.log("A new connection was made..");
-
     const clientID = userSockets.length + 1 ;
 
     userSockets.map(SocketOBJ=>SocketOBJ.socket.write(`User ${clientID} Joined the Chatroom!`));
@@ -27,26 +27,45 @@ server.on("connection", async (socket) => {
         })
     })
 
-    socket.on("end",()=>{
-        userSockets.map(SocketOBJ=>
-            SocketOBJ.socket.write(`User ${clientID} left the chatroom.`));
-    })
-
-    await userSockets.push({id:clientID.toString(),socket:socket});
-
-})
-
-
+    socket.on("end", () => {
+        const disconnectedUser = userSockets.find(
+          (SocketOBJ) => SocketOBJ.socket === socket
+        );
+    
+        if (disconnectedUser) {
+          const { id } = disconnectedUser;
+          userSockets = userSockets.filter(
+            (SocketOBJ) => SocketOBJ.socket !== socket
+          );
+    
+          userSockets.map((SocketOBJ) =>
+            SocketOBJ.socket.write(`User ${id} left the chatroom.`)
+          );
+        }
+      });
+    
+      socket.on("close", () => {
+        const disconnectedUser = userSockets.find(
+          (SocketOBJ) => SocketOBJ.socket === socket
+        );
+    
+        if (disconnectedUser) {
+          const { id } = disconnectedUser;
+          userSockets = userSockets.filter(
+            (SocketOBJ) => SocketOBJ.socket !== socket
+          );
+    
+          userSockets.map((SocketOBJ) =>
+            SocketOBJ.socket.write(`User ${id} left the chatroom.`)
+          );
+        }
+      });
+    
+      await userSockets.push({ id: clientID.toString(), socket: socket });
+    
+    });    
 // server.maxConnections=2;
 
 server.listen(PORT, HOSTNAME, () => {
     console.log(`Server is up and running at`, server.address())
 })
-        
-            // for (let v = 0; v < userSockets.length; v++) {
-            //     userSockets[v].on("data", (data) => {
-            //         for (let i = 0; i < userSockets.length; i++) {
-            //             userSockets[i].write(data.toString("utf-8"));
-            //         }
-            //     })
-            // }
