@@ -1,6 +1,6 @@
 const net = require("net");
 
-const HOSTNAME = '127.0.0.1' ;
+const HOSTNAME = '13.228.225.19' ;
 const PORT = 6000;
 
 const server = net.createServer();

@@ -1,5 +1,5 @@
-const HOST = ``;
-const PORT = 4000;
+const HOST = `4.224.39.72`;
+const PORT = 6000;
 const { clear } = require("console");
 const net = require("net");
 const readline = require("readline/promises")
@@ -27,7 +27,7 @@ const moveCursor = (dx,dy)=>{
 }
 
 let id;
-
+console.log(`HOST  = ` + HOST);
  const client = net.createConnection({host:HOST,port:PORT},async ()=>{
    
     console.log("Connection created")
