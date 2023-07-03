@@ -1,11 +1,9 @@
 const net = require("net");
 
-const HOSTNAME = process.env.HOST ;
-const PORT = process.env.PORT;
+const HOSTNAME = '127.0.0.1' ;
+const PORT = 6000;
 
 const server = net.createServer();
-
-
 
 let userSockets = []
 

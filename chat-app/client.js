@@ -1,4 +1,6 @@
- const { clear } = require("console");
+const HOST = ``;
+const PORT = 4000;
+const { clear } = require("console");
 const net = require("net");
 const readline = require("readline/promises")
  
@@ -26,7 +28,7 @@ const moveCursor = (dx,dy)=>{
 
 let id;
 
- const client = net.createConnection({host:"127.0.0.1",port:6969},async ()=>{
+ const client = net.createConnection({host:HOST,port:PORT},async ()=>{
    
     console.log("Connection created")
 
@@ -68,21 +70,3 @@ let id;
   
     })
 })
-
-
-// client.on("data",async (data)=>{
-//     await moveCursor(0,-1)
-//     await clearline(0);
-//     console.log(data.toString("utf-8"));
-//     ask();
-// })
-
-
-//  client.on("close",()=>{
-//     console.log("Connection Closed.")
-//  })
-
- 
-//  client.on("end",()=>{
-//     console.log("Connection Ended.")
-//  })
