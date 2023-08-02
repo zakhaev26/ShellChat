@@ -1,4 +1,4 @@
-const HOST = `13.126.197.85`;
+const HOST = `43.204.19.92`;
 const PORT = 6000;
 const { clear } = require("console");
 const net = require("net");

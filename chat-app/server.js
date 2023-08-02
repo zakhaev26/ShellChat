@@ -14,7 +14,7 @@ server.on("connection", async (socket) => {
     userSockets.map(SocketOBJ=>SocketOBJ.socket.write(`User ${clientID} Joined the Chatroom!`));
     
     socket.write(`id-${clientID}`)
-    
+1
     socket.on("data",(data)=>{
         const id = data.toString("utf-8").substring(0,data.toString().indexOf("-"));
         const message = data.toString("utf-8").substring(data.toString().indexOf("-message-")+9);
